@@ -1,0 +1,12 @@
+claim_id,claim,verified_by,artifact,result
+run-20260921-104343-evidence:gateway-allowed,in-scope request evaluates to Allowed,tests/test_policy_gates.py::test_26_valid_baseline_allowed,evidence/runs/run-20260921-104343-evidence/decisions.json,pass
+run-20260921-104343-evidence:gateway-conditional,missing consent holds execution as Conditional,tests/test_policy_gates.py::test_17_consent_missing_holds_conditional,evidence/runs/run-20260921-104343-evidence/decisions.json,pass
+run-20260921-104343-evidence:gateway-blocked,prompt injection evaluates to Blocked,tests/test_policy_gates.py::test_10_to_15_prompt_injection_blocked,evidence/runs/run-20260921-104343-evidence/decisions.json,pass
+run-20260921-104343-evidence:gateway-review,high-risk publish routes to Human Review with audit ticket,tests/test_policy_gates.py::test_24_high_risk_publish_human_review,evidence/runs/run-20260921-104343-evidence/decisions.json,pass
+run-20260921-104343-evidence:withdrawal-cutoff,revocation-to-block 0.02ms (< 50ms target),tests/test_runtime.py::test_withdrawal_propagation_bound,evidence/runs/run-20260921-104343-evidence/events.ndjson,pass
+run-20260921-104343-evidence:trace-chain,execution trace hash chain verifies end to end,tests/test_runtime.py::test_trace_chain_detects_tamper,evidence/runs/run-20260921-104343-evidence/trace.json,pass
+run-20260921-104343-evidence:manifest-pinned,training manifest Merkle root verifies,tests/test_runtime.py::test_training_admission_and_manifest,evidence/runs/run-20260921-104343-evidence/build_manifest.json,pass
+run-20260921-104343-evidence:ledger-replay,ledger replay drift = 0 records,tests/test_accounting_replay.py::test_accounting_replay_10k_zero_drift,evidence/runs/run-20260921-104343-evidence/statement.txt,pass
+run-20260921-104343-evidence:bench-evaluate_200rps_ms,evaluate_200rps_ms p95 = 0.546ms (target < 12ms),benchmarks/k6_gateway_stress.js,evidence/benchmarks/k6_results.json,pass
+run-20260921-104343-evidence:bench-evaluate_500rps_ms,evaluate_500rps_ms p95 = 0.495ms (target < 12ms),benchmarks/k6_gateway_stress.js,evidence/benchmarks/k6_results.json,pass
+run-20260921-104343-evidence:bench-evaluate_1000rps_ms,evaluate_1000rps_ms p95 = 0.465ms (target < 12ms),benchmarks/k6_gateway_stress.js,evidence/benchmarks/k6_results.json,pass

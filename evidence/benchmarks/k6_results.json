@@ -1,0 +1,31 @@
+{
+  "evaluate_1000rps_ms": {
+    "avg": 0.32120991933870896,
+    "count": 15001.0,
+    "max": 14.343,
+    "p50": 0.274,
+    "p95": 0.465,
+    "p99": 1.354
+  },
+  "evaluate_200rps_ms": {
+    "avg": 0.3906379999999997,
+    "count": 4000.0,
+    "max": 2.888,
+    "p50": 0.366,
+    "p95": 0.546,
+    "p99": 0.9130799999999998
+  },
+  "evaluate_500rps_ms": {
+    "avg": 0.38119508049195017,
+    "count": 10001.0,
+    "max": 16.877,
+    "p50": 0.341,
+    "p95": 0.495,
+    "p99": 1.148
+  },
+  "gateway": "http://127.0.0.1:8410",
+  "http_req_failed_rate": 0.0,
+  "recorded_at": "2026-09-21T10:43:40Z",
+  "suite": "benchmarks/k6_gateway_stress.js",
+  "thresholds_passed": true
+}
