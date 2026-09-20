@@ -1,0 +1,40 @@
+name: Benchmark
+
+on:
+  pull_request:
+    paths:
+      - "src/policy/**"
+      - "benchmarks/**"
+      - "scripts/run_benchmark.py"
+  workflow_dispatch:
+
+jobs:
+  k6-gateway-stress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install k6
+        run: |
+          sudo gpg -k
+          sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg \
+            --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | \
+            sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install -y k6
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+      - name: Run k6 gateway stress suite
+        run: python scripts/run_benchmark.py --out evidence/benchmarks/k6_results.json
+      - name: Upload benchmark artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: k6-results
+          path: |
+            evidence/benchmarks/k6_results.json
+            evidence/benchmarks/k6_summary.json
