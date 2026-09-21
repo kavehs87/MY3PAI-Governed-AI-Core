@@ -86,6 +86,10 @@ Full mapping with file pointers: `docs/regulatory-alignment.md`.
 
 Suite: `benchmarks/k6_gateway_stress.js` against `src/policy/service.py` (stdlib HTTP, no framework overhead). Reproduce: `make benchmark`. Machine-readable results: `evidence/benchmarks/k6_results.json` (recorded 2026-09-21T11:00:17Z, localhost).
 
+![Policy evaluation latency by load level](docs/assets/gateway-latency.svg)
+
+*Bars: p95 per load level (threshold-gated at 12ms); line: p99 envelope. Source: `evidence/benchmarks/k6_results.json`; p50 values in the table below. Chart rendered from the recorded data via the Kroki diagram service.*
+
 | Load level | Requests | Mean | p50 | p95 | p99 | Target |
 | :--- | ---: | ---: | ---: | ---: | ---: | :--- |
 | Policy evaluation @ 200 RPS | 4,001 | 0.46ms | 0.38ms | 0.59ms | 1.55ms | p95 < 12ms |
