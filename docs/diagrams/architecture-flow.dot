@@ -1,0 +1,35 @@
+digraph request_path {
+  graph [bgcolor="white", pad=0.4, dpi=160, rankdir=TB, splines="spline",
+         label=<<B><FONT POINT-SIZE="20" COLOR="#1A252F">Four-state request path</FONT></B>>,
+         labelloc="t", labeljust="c", fontname="Helvetica"]
+  node [fontname="Helvetica", fontsize="14", shape=box, style="rounded,filled"]
+  edge [fontname="Helvetica", fontsize="12", color="#7F8C8D", fontcolor="#566573"]
+
+  actor [label=<<B>Actor + Declared Purpose</B>>, shape=parallelogram, fillcolor="#EBF5FB", color="#2980B9", fontcolor="#1A5276"]
+  gateway [label=<<B>Policy Gateway</B><BR/><FONT POINT-SIZE="11">out-of-band, fail-closed</FONT>>, fillcolor="#0B5394", color="#0B5394", fontcolor="white", ordering=out]
+  allowed [label=<<B>Allowed</B>>, fillcolor="#1E8449", color="#1E8449", fontcolor="white"]
+  conditional [label=<<B>Conditional</B><BR/><FONT POINT-SIZE="11">consent required</FONT>>, fillcolor="#8D6E00", color="#8D6E00", fontcolor="white"]
+  review [label=<<B>Human Review</B><BR/><FONT POINT-SIZE="11">REV-* ticket</FONT>>, fillcolor="#7D3C98", color="#7D3C98", fontcolor="white"]
+  blocked [label=<<B>Blocked</B><BR/><FONT POINT-SIZE="11">terminal, audited</FONT>>, fillcolor="#C0392B", color="#C0392B", fontcolor="white"]
+  exec [label=<<B>Scoped Execution</B><BR/><FONT POINT-SIZE="11">bounded tool calls</FONT>>, fillcolor="#2471A3", color="#2471A3", fontcolor="white"]
+  holdq [label=<<B>Holding queue</B><BR/><FONT POINT-SIZE="11">awaiting consent</FONT>>, fillcolor="#5D6D7E", color="#5D6D7E", fontcolor="white"]
+  reviewq [label=<<B>Review queue</B><BR/><FONT POINT-SIZE="11">human adjudication</FONT>>, fillcolor="#5D6D7E", color="#5D6D7E", fontcolor="white"]
+  ledger [label=<<B>Audit Trail + Fixed-Point Ledger</B><BR/><FONT POINT-SIZE="11">hash-chained trace, exact settlement</FONT>>, fillcolor="#1A252F", color="#1A252F", fontcolor="white"]
+  breaker [label=<<B>Withdrawal Cutoff /<BR/>Connector Quarantine</B>>, shape=octagon, style="filled", fillcolor="white", color="#C0392B", penwidth=2.5, fontcolor="#C0392B"]
+
+  {rank=same; breaker; gateway}
+  {rank=same; allowed; conditional; review; blocked}
+  {rank=same; exec; holdq; reviewq}
+
+  actor -> gateway [label="PolicyRequest"]
+  gateway -> allowed [label="in scope"]
+  gateway -> conditional [label="consent missing"]
+  gateway -> review [label="high-risk action"]
+  gateway -> blocked [label="violation / revoked"]
+  allowed -> exec
+  conditional -> holdq [label="parked"]
+  review -> reviewq [label="ticketed"]
+  exec -> ledger [label="trace + settlement"]
+  breaker -> gateway [label="withdrawal blocks evaluation", color="#C0392B", fontcolor="#C0392B"]
+  breaker -> exec [label="quarantine reads", color="#C0392B", fontcolor="#C0392B"]
+}

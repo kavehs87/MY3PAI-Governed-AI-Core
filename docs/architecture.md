@@ -5,8 +5,8 @@
 `Actor + Declared Purpose` → `Policy Gateway` → `Four-State Engine` →
 `Scoped Execution` → `Audit Trail & Fixed-Point Accounting Ledger`,
 with `Revocation Cutoff` and `Connector Quarantine` as circuit breakers
-(see the C4 container diagram in README; PlantUML source in
-`docs/diagrams/architecture-c4.puml`).
+(see the request-path diagram in README; Graphviz source in
+`docs/diagrams/architecture-flow.dot`).
 
 ## Four-state engine
 

@@ -120,9 +120,9 @@ docker compose up --build --exit-code-from test-runner
 
 ## Architecture & Data Flow
 
-![C4 container view](docs/assets/architecture-c4.svg)
+![Four-state request path: actor to ledger with the withdrawal cutoff](docs/assets/architecture-flow.png)
 
-*Container view: gateway, registry, workflow engine, ledger, and the synchronous revocation path.*
+*Request path: `PolicyRequest` enters the out-of-band gateway; the four-state engine fans out to `Allowed` (scoped execution), `Conditional` (holding queue), `Human Review` (audited `REV-*` ticket), or `Blocked` (terminal); execution settles into the hash-chained trace and fixed-point ledger. The red path is the withdrawal cutoff.*
 
 1. **Policy Gateway (`src/policy/`):** Evaluates requests against active asset mandates and actor scopes. Returns one of four states: `Allowed`, `Conditional`, `Human Review`, or `Blocked`.
 2. **Deterministic Workflow Engine (`src/workflows/`):** Manages step execution, holding queues, and cryptographic trace logging.
