@@ -1,0 +1,25 @@
+direction: right
+
+actor: "Actor + Declared Purpose" {
+  shape: parallelogram
+}
+gateway: "Policy Gateway\nout-of-band, fail-closed"
+engine: "Four-State Engine\nAllowed / Conditional /\nBlocked / Human Review"
+scoped: "Scoped Execution\nbounded tool calls"
+holding: "Holding queue\nawaiting consent token"
+reviewq: "Review queue\naudit ticket REV-*"
+blocked: "Blocked\nterminal, audited"
+ledger: "Audit Trail +\nFixed-Point Accounting Ledger"
+breaker: "Revocation Cutoff /\nConnector Quarantine" {
+  shape: hexagon
+}
+
+actor -> gateway: "PolicyRequest"
+gateway -> engine
+engine -> scoped: "Allowed"
+engine -> holding: "Conditional"
+engine -> reviewq: "Human Review"
+engine -> blocked: "Blocked"
+scoped -> ledger: "hash-chained trace +\ninteger settlement"
+breaker -> gateway: "immediate block"
+breaker -> scoped: "refuse reads"
