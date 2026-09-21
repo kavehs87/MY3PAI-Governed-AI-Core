@@ -1,0 +1,16 @@
+{
+  "admitted_assets": [
+    "ev-asset-0",
+    "ev-asset-1",
+    "ev-asset-2"
+  ],
+  "build_id": "build-run-20260921-110100-evidence",
+  "content_hashes": [
+    "a3a4fe415903f9b16a0dbddf86246b71f5223197eeab0272e10dad38398c4412",
+    "6972c18bd8dd5ffa16ceb69a8e5ff1768037caf0c212b26869627a2bc5776df3",
+    "d956134c0f5e366a2616284dbe96d5114bf540d1352cbdd9b85a13e0f859c6ab"
+  ],
+  "frozen_at": "2026-09-21T11:01:00.324149Z",
+  "merkle_root": "c8abb9a203de6401d7f10d6a99b0161cad5e0b15281a5f3d3c5850f701461bc9",
+  "rule_version": "0.2.0"
+}

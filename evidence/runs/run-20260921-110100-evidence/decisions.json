@@ -1,0 +1,60 @@
+[
+  {
+    "asset_id": "ev-asset-0",
+    "evaluated_at": "2026-09-21T11:01:00.324149Z",
+    "reason": "within assessed scope",
+    "request_id": "ev-r1",
+    "required_conditions": [],
+    "reviewer_trail": [],
+    "rule_hash": "b528746ddac0365c5730a58e8363ceec509a510c79908cac0e6fe1fdee96fcbb",
+    "rule_version": "0.2.0",
+    "schema_version": "0.2.0",
+    "sequence": 0,
+    "state": "Allowed",
+    "ticket_id": null
+  },
+  {
+    "asset_id": "ev-consent",
+    "evaluated_at": "2026-09-21T11:01:00.324149Z",
+    "reason": "awaiting valid consent token",
+    "request_id": "ev-r2",
+    "required_conditions": [
+      "consent_token:valid"
+    ],
+    "reviewer_trail": [],
+    "rule_hash": "b528746ddac0365c5730a58e8363ceec509a510c79908cac0e6fe1fdee96fcbb",
+    "rule_version": "0.2.0",
+    "schema_version": "0.2.0",
+    "sequence": 2,
+    "state": "Conditional",
+    "ticket_id": null
+  },
+  {
+    "asset_id": "ev-asset-1",
+    "evaluated_at": "2026-09-21T11:01:00.324149Z",
+    "reason": "prompt injection rejected",
+    "request_id": "ev-r3",
+    "required_conditions": [],
+    "reviewer_trail": [],
+    "rule_hash": "b528746ddac0365c5730a58e8363ceec509a510c79908cac0e6fe1fdee96fcbb",
+    "rule_version": "0.2.0",
+    "schema_version": "0.2.0",
+    "sequence": 3,
+    "state": "Blocked",
+    "ticket_id": null
+  },
+  {
+    "asset_id": "ev-asset-2",
+    "evaluated_at": "2026-09-21T11:01:00.324149Z",
+    "reason": "high-risk action 'publish' requires human review",
+    "request_id": "ev-r4",
+    "required_conditions": [],
+    "reviewer_trail": [],
+    "rule_hash": "b528746ddac0365c5730a58e8363ceec509a510c79908cac0e6fe1fdee96fcbb",
+    "rule_version": "0.2.0",
+    "schema_version": "0.2.0",
+    "sequence": 4,
+    "state": "Human Review",
+    "ticket_id": "REV-37365D9228B15A50"
+  }
+]

@@ -1,4 +1,4 @@
-.PHONY: install test benchmark lint typecheck evidence serve clean
+.PHONY: install test verify benchmark lint typecheck evidence serve clean
 
 PY ?= python3
 K6_URL ?= http://127.0.0.1:8410
@@ -15,6 +15,12 @@ typecheck:
 
 test:
 	$(PY) -m pytest
+
+# Deterministic acceptance gate: policy gates, ledger edges, schema
+# contracts, and service wire path. Bounded, seed-fixed, no fuzz, no
+# network. Completes in seconds; full suite remains under `make test`.
+verify:
+	$(PY) -m pytest tests/test_policy_gates.py tests/test_ledger_edges.py tests/test_schemas.py tests/test_coverage_extra.py -q -o addopts=""
 
 test-gates:
 	$(PY) -m pytest tests/test_policy_gates.py -v

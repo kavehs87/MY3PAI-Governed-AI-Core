@@ -1,0 +1,57 @@
+[
+  {
+    "actor": "workflow",
+    "detail": {
+      "action": "infer"
+    },
+    "event": "request.received",
+    "event_hash": "e2d932ba26a7b826878e31f935e66c1a64c269c6d9e363a6bec33ac429ebcc71",
+    "monotonic_ns": 722788330915208,
+    "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "request_id": "ev-r1",
+    "sequence": 0,
+    "trace_id": "trace-run-20260921-110100-evidence",
+    "wall_time": "2026-09-21T11:01:00.326580Z"
+  },
+  {
+    "actor": "gateway",
+    "detail": {
+      "reason": "within assessed scope",
+      "sequence": 1
+    },
+    "event": "policy.allowed",
+    "event_hash": "cd9259dc75d9f87e5c10761a9f1335ea51f566e05ce26f77a50e5f83c485c3f7",
+    "monotonic_ns": 722788330946208,
+    "prev_hash": "e2d932ba26a7b826878e31f935e66c1a64c269c6d9e363a6bec33ac429ebcc71",
+    "request_id": "ev-r1",
+    "sequence": 1,
+    "trace_id": "trace-run-20260921-110100-evidence",
+    "wall_time": "2026-09-21T11:01:00.326611Z"
+  },
+  {
+    "actor": "agent",
+    "detail": {
+      "tool": "renderer"
+    },
+    "event": "tool.called",
+    "event_hash": "9faa7e30e00bf5df44b9665dae06a8f3d3b80c5c502788ca3b3125cd88fec29a",
+    "monotonic_ns": 722788330968208,
+    "prev_hash": "cd9259dc75d9f87e5c10761a9f1335ea51f566e05ce26f77a50e5f83c485c3f7",
+    "request_id": "ev-r1",
+    "sequence": 2,
+    "trace_id": "trace-run-20260921-110100-evidence",
+    "wall_time": "2026-09-21T11:01:00.326633Z"
+  },
+  {
+    "actor": "workflow",
+    "detail": {},
+    "event": "run.completed",
+    "event_hash": "c1d3c126c59d4c298215446b2a3bbd320ffe0b12f3a16b74baab43004a5e0480",
+    "monotonic_ns": 722788330983875,
+    "prev_hash": "9faa7e30e00bf5df44b9665dae06a8f3d3b80c5c502788ca3b3125cd88fec29a",
+    "request_id": "ev-r1",
+    "sequence": 3,
+    "trace_id": "trace-run-20260921-110100-evidence",
+    "wall_time": "2026-09-21T11:01:00.326649Z"
+  }
+]

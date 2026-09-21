@@ -1,0 +1,4 @@
+services:
+  test-runner:
+    build: .
+    command: ["make", "verify"]
