@@ -36,9 +36,9 @@ test-runner-1 exited with code 0
 
 ## 2. Core architectural model and invariants
 
-![Core architectural model](docs/assets/architecture-flow.svg)
+![C4 container view of the governed core](docs/assets/architecture-c4.svg)
 
-*Request path: `PolicyRequest` enters the out-of-band gateway; the four-state engine fans out to `Allowed` (scoped execution), `Conditional` (holding queue), `Human Review` (audited `REV-*` ticket), and `Blocked` (terminal); execution settles into the hash-chained trace and fixed-point ledger. The revocation cutoff and connector quarantine breaker interrupts both evaluation and retrieval. Diagram source: D2 (`docs/diagrams/architecture-flow.d2`), rendered to SVG via the Kroki diagram service.*
+*C4 container view. `PolicyRequest` enters the out-of-band gateway; the four-state engine fans out to `Allowed` (scoped execution), `Conditional` (holding queue), `Human Review` (audited `REV-*` ticket), and `Blocked` (terminal); execution settles into the hash-chained trace and fixed-point ledger. The red path is the revocation cutoff: `Withdrawal broadcast` → `Connector Registry` → `Quarantines`, executed synchronously on withdrawal. Diagram source: C4-PlantUML (`docs/diagrams/architecture-c4.puml`), rendered to SVG via the Kroki diagram service.*
 
 Request path: `PolicyRequest` (actor, declared purpose, tenant, scopes, consent tokens) enters the gateway; the four-state engine decides; only `Allowed` reaches scoped execution; every transition appends to a hash-chained trace and settles in the integer ledger. Revocation short-circuits the gateway and quarantines connectors on the same synchronous call (see `src/records/store.py`, `src/connectors/registry.py`).
 
