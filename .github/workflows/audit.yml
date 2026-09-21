@@ -19,5 +19,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e ".[dev]"
+      # Without --strict: the local package itself is not on PyPI and cannot
+      # be audited; findings in third-party dependencies still fail the job.
       - name: pip-audit
-        run: pip-audit --strict
+        run: pip-audit

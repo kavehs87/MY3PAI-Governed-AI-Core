@@ -36,7 +36,7 @@ select = ["E", "F", "I", "B", "UP", "ASYNC", "S", "C90", "PL"]
 ignore = ["S101", "UP017", "UP042", "PLC0415", "S311", "S310", "PLR2004"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101", "PLR2004", "SLF001", "ARG001", "PLR0913"]
+"tests/*" = ["S101", "PLR2004", "SLF001", "ARG001", "PLR0913", "PLR0917"]
 "scripts/*" = ["S101", "PLR2004", "S310"]
 # Ordered rule evaluation in the gateway is intentionally linear: each
 # terminal rule returns immediately so audit order is unambiguous.
