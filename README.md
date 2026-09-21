@@ -153,15 +153,9 @@ make benchmark
 
 ## Prior Art & Architectural Boundaries
 
-| Dimension | **MY3PAI Governed Core** | **In-Process Guardrails** *(Guardrails AI, NeMo)* | **Infrastructure Policy** *(Open Policy Agent)* | **Asset Standards** *(C2PA)* | **Enterprise GRC** *(Credo AI, OneTrust)* |
-| --- | --- | --- | --- | --- | --- |
-| **Execution Domain** | **Out-of-band runtime gateway** | In-process application interceptor | Sidecar daemon / host agent | Static file metadata layer | Post-hoc compliance platform |
-| **Primary Scope** | **IP rights, content custody & financial ledgering** | Toxic text, output structure & hallucination | Cloud infra, API & Kubernetes RBAC/ABAC | Cryptographic media provenance | High-level risk management & reporting |
-| **Agent Isolation** | **Hard isolation (Cannot self-authorize)** | Weak (Vulnerable to prompt override) | Hard isolation | N/A (Data specification only) | N/A (Organizational layer) |
-| **Revocation Cutoff** | **Runtime connector quarantine (< 50ms)** | Unsupported (Requires retraining) | Requires policy re-compilation | Unsupported (Persists on static file) | Manual policy adjustment workflow |
-| **Contribution Math** | **Fixed-point reproducible ledger** | None | None | None | None |
-| **Integration Model** | **Consumes C2PA; bounds agent tool access** | Wraps LLM client calls directly | Evaluates generic JSON payloads | Embedded in media file headers | Web platform & audit questionnaires |
-| **Latency Profile** | **< 12ms (p95 @ 500 RPS)** | 50ms–300ms (LLM-evaluator dependent) | < 5ms (In-memory Rego evaluation) | N/A (Static file verification) | N/A (Out-of-path) |
+![Architectural boundary comparison: MY3PAI Governed Core against in-process guardrails, infrastructure policy engines, asset metadata standards, and enterprise GRC platforms](docs/assets/prior-art-comparison.png)
+
+*Green cells mark capabilities the runtime provides end-to-end. Complementary tools: OPA is the reference for raw in-memory policy speed; C2PA is the provenance format consumed at admission; Guardrails AI and NeMo screen prompt content in-process.*
 
 ---
 
